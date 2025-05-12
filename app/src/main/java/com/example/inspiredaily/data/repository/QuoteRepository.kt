@@ -7,7 +7,6 @@ import com.example.inspiredaily.data.model.QuoteResponse
 import com.example.inspiredaily.db.QuoteDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -43,11 +42,7 @@ class QuoteRepository @Inject constructor(
        return  dao.getQuote()
     }
 
-    suspend fun getAllQuotes() {
-        dao.getQuotesList().collectLatest{
-            Log.d("AllQuotes", it.toString())
-        }
-    }
+
 
 
 }

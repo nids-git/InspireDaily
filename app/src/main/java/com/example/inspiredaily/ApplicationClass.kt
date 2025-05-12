@@ -35,7 +35,6 @@ class ApplicationClass : Application(), Configuration.Provider {
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
-
         val workRequest = PeriodicWorkRequest.Builder(
             QuoteSyncWorker::class.java,
             15,
@@ -43,7 +42,6 @@ class ApplicationClass : Application(), Configuration.Provider {
         ).setConstraints(constraints)
             .addTag("daily_quote_work")
             .build()
-
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             "DailyQuoteWork",
             ExistingPeriodicWorkPolicy.KEEP,
